@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_CmControlModule" Id="{db586d8b-1800-47a0-a5ad-be89216b1eaa}">
+    <Declaration><![CDATA[INTERFACE I_CmControlModule EXTENDS I_PmlObject
+]]></Declaration>
+    <Folder Name="Methods" Id="{cd5f0816-f15a-4aea-a4f1-399ec4f84e61}" />
+    <Folder Name="Properties" Id="{673b57f1-f485-4180-868c-684cda31dd88}" />
+  </Itf>
+</TcPlcObject>

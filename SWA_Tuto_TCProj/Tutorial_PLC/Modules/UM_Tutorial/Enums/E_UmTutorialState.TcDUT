@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="E_UmTutorialState" Id="{a128ae15-d315-4719-b531-512f438440f7}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_UmTutorialState :
+(
+	NoCmd
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

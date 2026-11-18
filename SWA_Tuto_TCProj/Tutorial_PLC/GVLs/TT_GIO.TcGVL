@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="TT_GIO" Id="{dcbb54c5-ae90-4b34-934f-4117460ade5a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	// TwinSAFE
+	Safety	: TwinSAFE;
+	// AXIS IO
+	//SLICE AXIS
+	{attribute 'TcNcAxis' := 'Tutorial Axis'}
+	AX_TUTORIAL				: AXIS_REF;  //EL7211-9014 R01 S05
+	// SLICE IO
+	// TUTORIAL R01 EL1008 SLOT 01
+    {attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 1^Input'}
+	I_PB_SAFETY_RESET		AT %I* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 2^Input'}
+	I_PB_MOMENTARY		AT %I* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 3^Input'}
+	I_PX_CYL_EXAMPLE_E		AT %I* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 4^Input'}
+	I_PX_CYL_EXAMPLE_R		AT %I* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 5^Input'}
+	I_R01_S01_I_BIT_05		AT %I* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 6^Input'}
+	I_R01_S01_I_BIT_06		AT %I* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 7^Input'}
+	I_R01_S01_I_BIT_07		AT %I* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S01 (EL1008)^Channel 8^Input'}
+	I_R01_S01_I_BIT_08		AT %I* : BOOL;
+	// TUTORIAL R01 EL2008 SLOT 04
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 1^Output'}
+    O_R01_S04_O_BIT_01		AT %Q* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 2^Output'}
+    O_R01_S04_O_BIT_02		AT %Q* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 3^Output'}
+    O_R01_S04_O_BIT_03		AT %Q* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 4^Output'}
+    O_R01_S04_O_BIT_04		AT %Q* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 5^Output'}
+    O_R01_S04_O_BIT_05		AT %Q* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 6^Output'}
+    O_R01_S04_O_BIT_06		AT %Q* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 7^Output'}
+    O_DO_SIGNAL_PL		AT %Q* : BOOL;
+	{attribute 'TcLinkTo' := 'TIID^LaptopPort (EtherCAT)^Rack_01 (EK1101)^Rack_01_S04 (EL2008)^Channel 8^Output'}
+    O_SV_CYL_EXAMPLE_E		AT %Q* : BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

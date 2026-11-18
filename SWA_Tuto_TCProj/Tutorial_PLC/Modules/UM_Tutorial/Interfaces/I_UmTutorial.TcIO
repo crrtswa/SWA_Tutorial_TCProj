@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_UmTutorial" Id="{137b39e7-5c9e-4618-9b53-add8b8f8bdee}">
+    <Declaration><![CDATA[INTERFACE I_UmTutorial EXTENDS I_PmlObject
+]]></Declaration>
+    <Folder Name="Methods" Id="{9853c71d-66fd-431e-ab35-6fd9bf7a2b9f}" />
+    <Folder Name="Properties" Id="{2571d71c-65c8-4e5b-8701-dc91299d17b9}" />
+  </Itf>
+</TcPlcObject>

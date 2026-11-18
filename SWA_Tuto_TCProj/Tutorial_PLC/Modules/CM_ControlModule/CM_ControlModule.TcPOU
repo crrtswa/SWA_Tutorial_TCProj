@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="CM_ControlModule" Id="{6bd9f387-eeb9-4515-9779-aa7709b1122b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FINAL CM_ControlModule EXTENDS PML_Module IMPLEMENTS I_CmControlModule
+VAR_IN_OUT
+    DevList : ST_ControlModuleDevList;
+END_VAR
+VAR
+	// Tags trailing properties
+
+
+	// PB Instance Declaration
+
+
+	// Sequence Instance Declaration
+	seqModuleSequence	: SEQ_ModuleSequence := (Description := 'Module Sequence', _enableHmiStart := TRUE, _enableSfcTipCtrl := FALSE);
+
+	// Module/Device Instance Declaration
+
+	// Other local variables
+	cmd	: E_CmControlModuleCmd;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Call Pushbutton FBs (or Update command)
+
+
+// Evaluate commands to drive states, run methods of devices (ax.MoveAbs), run seq etc.
+StateTransitionLogic();
+
+// Call Sequence FBs
+// Call Sequence FBs
+seqModuleSequence(DevList := THIS^.DevList);
+
+// Call Module/Device FBs
+SUPER^(); // Basically a module. Call other modules below this.
+
+
+// Reset cmd at end of FB Scan
+cmd := E_CmControlModuleCmd.NoCmd;]]></ST>
+    </Implementation>
+    <Folder Name="Interface Methods" Id="{07c18477-deb2-4f8f-8bb0-9f2f98c77fae}" />
+    <Folder Name="Interface Properties" Id="{b53d5b70-581e-47aa-8ccc-d349c865956c}">
+      <Folder Name="PBs" Id="{2415b04f-52f8-46fe-aae2-14920befeb5b}" />
+    </Folder>
+    <Folder Name="Override Methods" Id="{f166f506-d564-48b0-bc0b-d85579121499}">
+      <Folder Name="Alarm Methods" Id="{67d5975e-da59-41cd-9e2b-c649c072069f}" />
+      <Folder Name="PML State Methods" Id="{207ce5fe-9b50-4b4f-8d5e-18c54ee32d60}" />
+    </Folder>
+    <Folder Name="Override Properties" Id="{f4d0ca19-06ae-4acb-9cf0-8e582dd7d3a4}">
+      <Folder Name="PBs" Id="{41b8106d-78c5-45f8-a060-b726c2df9a8b}" />
+    </Folder>
+    <Folder Name="Private Methods" Id="{df29cb4e-1f08-4ac4-b495-c7ec4478b825}" />
+    <Method Name="InitAlarms" Id="{536445a3-f197-4bc3-a73f-5691a2fa7e9e}" FolderPath="Override Methods\Alarm Methods\">
+      <Declaration><![CDATA[METHOD PRIVATE InitAlarms : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RaiseAlarm" Id="{6eefa232-6459-4c40-a7f0-20ed389d05a0}" FolderPath="Override Methods\Alarm Methods\">
+      <Declaration><![CDATA[METHOD PRIVATE RaiseAlarm : BOOL
+VAR_INPUT
+	AlarmId : UDINT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE AlarmId OF
+0:
+	;
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RunPmlExecute" Id="{d0d30f7a-bdd3-450c-8e7d-1d3fbeb1edbb}" FolderPath="Override Methods\PML State Methods\">
+      <Declaration><![CDATA[METHOD PROTECTED RunPmlExecute
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Add custom implementation
+CASE CurrentPmlMode OF
+	E_PmlMode.Production:
+		//
+
+	E_PmlMode.SemiAuto:
+		//
+
+	E_PmlMode.Manual:
+		//
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetDependency" Id="{35445cbb-64bd-4192-bb62-69b56d940994}" FolderPath="Override Methods\">
+      <Declaration><![CDATA[METHOD PROTECTED SetDependency
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Attach Sequences
+Attach(seqModuleSequence);
+
+// Attach Modules/Devices
+
+// The warning can be disabled here as the user is aware of the risk that the reference may not be valid by checking its validity
+{warning disable C0371}
+
+// Checking the VAR_IN_OUT reference, leave the current method in case of invalid reference
+IF NOT __ISVALIDREF(DevList) THEN
+     RETURN;
+END_IF
+
+// Access to VAR_IN_OUT reference (only if the reference was confirmed as valid before)
+AttachDevList(ListPointer := ADR(DevList), ListSize := SIZEOF(DevList));
+
+// The warning may be restored at the end of the access area
+{warning restore C0371}
+SUPER^.SetDependency(); // Call at the end, after all of the attach]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="StateTransitionLogic" Id="{34a273d8-4104-4c06-9c03-b4f26a86d847}" FolderPath="Private Methods\">
+      <Declaration><![CDATA[METHOD PRIVATE StateTransitionLogic
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="CM_ControlModule">
+      <LineId Id="27" Count="6" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="34" Count="6" />
+      <LineId Id="8" Count="0" />
+    </LineIds>
+    <LineIds Name="CM_ControlModule.InitAlarms">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="CM_ControlModule.RaiseAlarm">
+      <LineId Id="6" Count="2" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="CM_ControlModule.RunPmlExecute">
+      <LineId Id="4" Count="10" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="CM_ControlModule.SetDependency">
+      <LineId Id="4" Count="4" />
+      <LineId Id="10" Count="11" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="CM_ControlModule.StateTransitionLogic">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

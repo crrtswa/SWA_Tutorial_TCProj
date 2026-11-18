@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_ControlModuleDevList" Id="{478f85a9-c35e-49e7-a233-0395b519f793}">
+    <Declaration><![CDATA[TYPE ST_ControlModuleDevList :
+STRUCT
+	DiMomentaryPb	: I_DevDigitalIn;
+	CylExample		: I_DevCylinder;
+	DoSignalPl		: I_DevDigitalOut;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

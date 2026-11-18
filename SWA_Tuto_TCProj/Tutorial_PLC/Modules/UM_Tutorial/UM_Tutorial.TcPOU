@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="UM_Tutorial" Id="{98a93146-8600-4fd2-a2c5-604a09700b9c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FINAL UM_Tutorial EXTENDS PML_UnitMachine IMPLEMENTS I_UmTutorial
+
+VAR
+	// Tags trailing properties
+
+
+	// PB Instance Declaration
+
+
+	// Sequence Instance Declaration
+
+
+	// Module/Device Instance Declaration
+	
+	DiResetPb			: DEV_DigitalIn	:= (Description := 'Reset PB'); //Machine Reset Pushbutton Attach to the Unit Machine for uses beyond ESTOP reset
+	DiMomentaryPb		: DEV_DigitalIn	:= (Description := 'Momentary PB');
+	CylExample			: DEV_Cylinder := (Description := 'Example Cyl', ValveType := E_ValveType.Five2SingleNR, ViewedAsEngDiseng := FALSE, RetractIsEngaged := FALSE);
+	DoSignalPl			: DEV_DigitalOut := (Description := 'Signal Pilot Light');
+    cmModule			: CM_ControlModule	:= (Description	:= 'Control Module',
+											UseGenericVisu	:= TRUE,
+											HasParams := FALSE,
+											HasStatus := FALSE);	
+	//DevLists
+	ModuleDevList	: ST_ControlModuleDevList := (DiMomentaryPb	:= DiMomentaryPb,
+													CylExample		:= CylExample,
+													DoSignalPl		:= DoSignalPl);
+											
+	// Other local variables
+	cmd	: E_UmTutorialCmd;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Call Pushbutton FBs (or Update command)
+
+
+// Evaluate commands to drive states, run methods of devices (ax.MoveAbs), run seq etc.
+StateTransitionLogic();
+
+// Call Sequence FBs
+
+
+
+
+// Call Module/Device FBs
+SUPER^(); // Basically a module. Call other modules below this.
+DiResetPb();
+DiMomentaryPb();
+CylExample();
+DoSignalPl();
+cmModule(DevList := ModuleDevList);
+
+// Reset cmd at end of FB Scan
+cmd := E_UmTutorialCmd.NoCmd;]]></ST>
+    </Implementation>
+    <Folder Name="Interface Methods" Id="{2b736cab-0772-4e45-9327-1fd70f09f3cf}" />
+    <Folder Name="Interface Properties" Id="{da3be5c4-f23a-46ef-9b35-7673e3d31cf3}">
+      <Folder Name="PBs" Id="{9f1ab87c-1dee-4ca2-a836-199ca639246e}" />
+    </Folder>
+    <Folder Name="Override Methods" Id="{1341f9a1-33c6-4907-9bbf-68ed5e964f4e}">
+      <Folder Name="Alarm Methods" Id="{1496b51e-f8ad-4a32-b657-c884da1dca9e}" />
+      <Folder Name="PML State Methods" Id="{fbc3a72f-7ef8-4947-946b-ee9127d39b4a}" />
+    </Folder>
+    <Folder Name="Override Properties" Id="{a58503d8-c290-43e8-b774-24b499059700}">
+      <Folder Name="PBs" Id="{3dac12dc-cefd-4c53-8785-4ed1c9112af7}" />
+    </Folder>
+    <Folder Name="Private Methods" Id="{6fa31893-7a85-4ab1-a935-13d27823acb3}">
+      <Folder Name="IoMappings" Id="{cf94646a-8beb-48c6-a111-662d8b23209c}" />
+    </Folder>
+    <Property Name="Empty" Id="{f4e7b9aa-ba65-499b-963b-1c85a88b9734}" FolderPath="Interface Properties\">
+      <Declaration><![CDATA[PROPERTY Empty : BOOL]]></Declaration>
+    </Property>
+    <Method Name="InitAlarms" Id="{167c02cc-60a4-4ced-9e8d-95d7ddba33a9}" FolderPath="Override Methods\Alarm Methods\">
+      <Declaration><![CDATA[METHOD PRIVATE InitAlarms : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MapInputs" Id="{10ce1684-7107-4e38-96bc-a4797d210cd6}" FolderPath="Private Methods\IoMappings\">
+      <Declaration><![CDATA[METHOD MapInputs : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MapOutputs" Id="{70f321d5-6e7d-475c-bb03-8cc66ffa6d54}" FolderPath="Private Methods\IoMappings\">
+      <Declaration><![CDATA[METHOD MapOutputs : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RaiseAlarm" Id="{61e21f5d-2e19-4e00-a486-7d4fe05f7403}" FolderPath="Override Methods\Alarm Methods\">
+      <Declaration><![CDATA[METHOD PRIVATE RaiseAlarm : BOOL
+VAR_INPUT
+	AlarmId : UDINT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE AlarmId OF
+0:
+	;
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RunPmlExecute" Id="{a0ed8bfd-dfe2-4414-8369-6d32fcafd07f}" FolderPath="Override Methods\PML State Methods\">
+      <Declaration><![CDATA[METHOD PROTECTED RunPmlExecute
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Add custom implementation
+CASE CurrentPmlMode OF
+	E_PmlMode.Production:
+		//
+
+	E_PmlMode.SemiAuto:
+		//
+
+	E_PmlMode.Manual:
+		//
+
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetDependency" Id="{fb9bc604-b0ed-4b9d-b877-beed0b9adff2}" FolderPath="Override Methods\">
+      <Declaration><![CDATA[METHOD PROTECTED SetDependency
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Attach Sequences
+
+
+// Attach Modules/Devices
+Attach(DiResetPb);
+Attach(cmModule);
+
+SUPER^.SetDependency(); // Call at the end, after all of the attach]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="StateTransitionLogic" Id="{d7e4bbe8-2309-443a-bd97-59c5beab82b8}" FolderPath="Private Methods\">
+      <Declaration><![CDATA[METHOD PRIVATE StateTransitionLogic
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="UM_Tutorial">
+      <LineId Id="27" Count="10" />
+      <LineId Id="45" Count="4" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="39" Count="1" />
+      <LineId Id="8" Count="0" />
+    </LineIds>
+    <LineIds Name="UM_Tutorial.InitAlarms">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="UM_Tutorial.MapInputs">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="UM_Tutorial.MapOutputs">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="UM_Tutorial.RaiseAlarm">
+      <LineId Id="6" Count="2" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="UM_Tutorial.RunPmlExecute">
+      <LineId Id="4" Count="10" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="UM_Tutorial.SetDependency">
+      <LineId Id="4" Count="4" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="UM_Tutorial.StateTransitionLogic">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

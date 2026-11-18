@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{81a9f757-7db3-43f0-a54f-2190313d9fed}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	Machine : UM_Tutorial := (Description := ' Tutorial Project ',
+							UseGenericVISU := TRUE);
+	DownloadBit : BOOL := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[TT_GIO.Safety(Reset_Trigger := Machine.PbReset.Actuate);
+TT_GIO.Safety.In.EStop_OK := TRUE;
+TT_GIO.Safety.In.EStop_STO := TRUE;
+
+Machine(SafetyBlock := TT_GIO.Safety);]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="6" Count="3" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
