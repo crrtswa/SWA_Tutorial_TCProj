@@ -16,71 +16,11 @@
 		</System>
 		<Plc>
 			<Project GUID="{41417217-F69D-4141-BEE4-822DED5474F2}" Name="Tutorial_PLC" PrjFilePath="Tutorial_PLC\Tutorial_PLC.plcproj" TmcFilePath="Tutorial_PLC\Tutorial_PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{CB81CC36-5B5A-3580-4152-388020C2AC1E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{10828E53-9975-FCC1-0D14-627851113021}">
 					<Name>Tutorial_PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Com_Err</Name>
-							<Comment><![CDATA[FROM TWINSAFE: Communication error in one of the connections]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.FB_Err</Name>
-							<Comment><![CDATA[FROM TWINSAFE: Error at one of the FBs used]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Out_Err</Name>
-							<Comment><![CDATA[FROM TWINSAFE: NOT USED, DO NOT CONNECT TO GROUP PORT]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Other_Err</Name>
-							<Comment><![CDATA[FROM TWINSAFE: ModuleFault OR AnalogValueFault OR WaitComTimeoutFault]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Com_Startup</Name>
-							<Comment><![CDATA[FROM TWINSAFE: At least one of the connections of this group is in startup]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.FB_Deactive</Name>
-							<Comment><![CDATA[FROM TWINSAFE: The group was deactivated.]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.FB_Run</Name>
-							<Comment><![CDATA[FROM TWINSAFE: FBs of the TwinSAFE group are processed]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.GP_In.In_Run</Name>
-							<Comment><![CDATA[FROM TWINSAFE: TwinSAFE group is in RUN state	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.EStop_OK</Name>
-							<Comment><![CDATA[ FROM TWINSAFE: Actual Emergency Stop Signal]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.In.EStop_STO</Name>
-							<Comment><![CDATA[ FROM TWINSAFE: Delayed Emergency Stop Signal]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.IO_Brain.Project_CRC</Name>
-							<Comment><![CDATA[FROM TWINSAFE Device IO: Current CRC in the safety project]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.IO_Brain.Serial_Number</Name>
-							<Comment><![CDATA[FROM TWINSAFE Device IO: Current serial number of the safety target in the safety project]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
 						<Var>
 							<Name>TT_GIO.Safety.In.GP_In.Com_Err</Name>
 							<Comment><![CDATA[FROM TWINSAFE: Communication error in one of the connections]]></Comment>
@@ -141,39 +81,69 @@
 							<Comment><![CDATA[FROM TWINSAFE Device IO: Current serial number of the safety target in the safety project]]></Comment>
 							<Type>UDINT</Type>
 						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Com_Err</Name>
+							<Comment><![CDATA[FROM TWINSAFE: Communication error in one of the connections]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.FB_Err</Name>
+							<Comment><![CDATA[FROM TWINSAFE: Error at one of the FBs used]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Out_Err</Name>
+							<Comment><![CDATA[FROM TWINSAFE: NOT USED, DO NOT CONNECT TO GROUP PORT]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Other_Err</Name>
+							<Comment><![CDATA[FROM TWINSAFE: ModuleFault OR AnalogValueFault OR WaitComTimeoutFault]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.Com_Startup</Name>
+							<Comment><![CDATA[FROM TWINSAFE: At least one of the connections of this group is in startup]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.FB_Deactive</Name>
+							<Comment><![CDATA[FROM TWINSAFE: The group was deactivated.]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.FB_Run</Name>
+							<Comment><![CDATA[FROM TWINSAFE: FBs of the TwinSAFE group are processed]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.GP_In.In_Run</Name>
+							<Comment><![CDATA[FROM TWINSAFE: TwinSAFE group is in RUN state	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.EStop_OK</Name>
+							<Comment><![CDATA[ FROM TWINSAFE: Actual Emergency Stop Signal]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.In.EStop_STO</Name>
+							<Comment><![CDATA[ FROM TWINSAFE: Delayed Emergency Stop Signal]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.IO_Brain.Project_CRC</Name>
+							<Comment><![CDATA[FROM TWINSAFE Device IO: Current CRC in the safety project]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.IO_Brain.Serial_Number</Name>
+							<Comment><![CDATA[FROM TWINSAFE Device IO: Current serial number of the safety target in the safety project]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.Out.GP_Out.Err_Ack</Name>
-							<Comment><![CDATA[ TO TWINSAFE: Error Acknowledge FOR resetting errors within the group]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.Out.GP_Out.Run</Name>
-							<Comment><![CDATA[ TO TWINSAFE: Run/Stop IN 1 - Run; 0 – Stop]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.Out.GP_Out.Module_Fault</Name>
-							<Comment><![CDATA[ TO TWINSAFE: NOT USED, DO NOT CONNECT TO GROUP PORT]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.Out.EStop_Reset</Name>
-							<Comment><![CDATA[ TO TWINSAFE: Emergency stop Reset Push Button Hit	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.SVO_Safe</Name>
-							<Comment><![CDATA[  TO TWINSAFE: All servos are STO'd]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.Machine.SafetyBlock.Air_Safe</Name>
-							<Comment><![CDATA[  TO TWINSAFE: No air pressure detected	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
 						<Var>
 							<Name>TT_GIO.Safety.Out.GP_Out.Err_Ack</Name>
 							<Comment><![CDATA[ TO TWINSAFE: Error Acknowledge FOR resetting errors within the group]]></Comment>
@@ -201,6 +171,36 @@
 						</Var>
 						<Var>
 							<Name>TT_GIO.Safety.Air_Safe</Name>
+							<Comment><![CDATA[  TO TWINSAFE: No air pressure detected	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.Out.GP_Out.Err_Ack</Name>
+							<Comment><![CDATA[ TO TWINSAFE: Error Acknowledge FOR resetting errors within the group]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.Out.GP_Out.Run</Name>
+							<Comment><![CDATA[ TO TWINSAFE: Run/Stop IN 1 - Run; 0 – Stop]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.Out.GP_Out.Module_Fault</Name>
+							<Comment><![CDATA[ TO TWINSAFE: NOT USED, DO NOT CONNECT TO GROUP PORT]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.Out.EStop_Reset</Name>
+							<Comment><![CDATA[ TO TWINSAFE: Emergency stop Reset Push Button Hit	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.SVO_Safe</Name>
+							<Comment><![CDATA[  TO TWINSAFE: All servos are STO'd]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.Machine.SafetyBlock.Air_Safe</Name>
 							<Comment><![CDATA[  TO TWINSAFE: No air pressure detected	]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
